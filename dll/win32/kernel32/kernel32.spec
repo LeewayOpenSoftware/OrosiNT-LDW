@@ -66,7 +66,7 @@
 @ stdcall CancelDeviceWakeupRequest(long)
 @ stdcall CancelIo(long)
 @ stdcall -version=0x600+ CancelIoEx(ptr ptr)
-@ stdcall -version=0x600+ CancelSynchronousIo(ptr) kernelbase.CancelSynchronousIo
+@ stdcall -version=0x600+ CancelSynchronousIo(long) kernelbase.CancelSynchronousIo
 @ stdcall -version=0x600+ CancelThreadpoolIo(ptr) ntdll.TpCancelAsyncIoOperation
 @ stdcall CancelTimerQueueTimer(long long)
 @ stdcall CancelWaitableTimer(long)
@@ -100,7 +100,7 @@
 @ stdcall CompareFileTime(ptr ptr) kernelbase.CompareFileTime
 @ stdcall -version=0xA00+ CompareObjectHandles(ptr ptr)
 @ stdcall CompareStringA(long long str long str long) kernelbase.CompareStringA
-@ stdcall -version=0x600+ CompareStringEx(wstr long wstr long wstr long ptr ptr ptr) kernelbase.CompareStringEx
+@ stdcall -version=0x600+ CompareStringEx(wstr long wstr long wstr long ptr ptr long) kernelbase.CompareStringEx
 @ stdcall -version=0x600+ CompareStringOrdinal(wstr long wstr long long)
 @ stdcall CompareStringW(long long wstr long wstr long) kernelbase.CompareStringW
 @ stdcall ConnectNamedPipe(long ptr)
@@ -356,7 +356,7 @@
 @ stdcall FindNextVolumeMountPointW(long wstr long)
 @ stdcall FindNextVolumeW(long ptr long)
 @ stdcall -version=0x602+ FindPackagesByPackageFamily(wstr long ptr ptr ptr ptr ptr) kernelbase.FindPackagesByPackageFamily
-@ stdcall -version=0xA00+ DeriveCapabilitySidsFromName(wstr ptr ptr ptr ptr) kernelbase.DeriveCapabilitySidsFromName
+@ stdcall -version=0xA00+ DeriveCapabilitySidsFromName(ptr ptr ptr ptr ptr) kernelbase.DeriveCapabilitySidsFromName
 @ stdcall FindResourceA(long str str)
 @ stdcall FindResourceExA(long str str long)
 @ stdcall FindResourceExW(long wstr wstr long)
@@ -405,7 +405,7 @@
 @ stub -version=0x600+ GetCalendarDaysInMonth
 @ stub -version=0x600+ GetCalendarDifferenceInDays
 @ stdcall GetCalendarInfoA(long long long ptr long ptr)
-@ stdcall -version=0x600+ GetCalendarInfoEx(wstr long wstr long wstr long ptr) kernelbase.GetCalendarInfoEx
+@ stdcall -version=0x600+ GetCalendarInfoEx(wstr long ptr long ptr long ptr) kernelbase.GetCalendarInfoEx
 @ stdcall GetCalendarInfoW(long long long ptr long ptr) kernelbase.GetCalendarInfoW
 @ stub -version=0x600+ GetCalendarMonthsInYear
 @ stdcall -version=0x600+ GetCalendarSupportedDateRange(long ptr ptr)
@@ -689,7 +689,7 @@
 @ stdcall GetSystemFirmwareTable(long long ptr long) kernelbase.GetSystemFirmwareTable
 @ stdcall GetSystemInfo(ptr) kernelbase.GetSystemInfo
 @ stdcall GetSystemPowerStatus(ptr)
-@ stdcall -version=0x600+ GetSystemPreferredUILanguages(long ptr wstr ptr) kernelbase.GetSystemPreferredUILanguages
+@ stdcall -version=0x600+ GetSystemPreferredUILanguages(long ptr ptr ptr) kernelbase.GetSystemPreferredUILanguages
 @ stdcall GetSystemRegistryQuota(ptr ptr)
 @ stdcall GetSystemTime(ptr) kernelbase.GetSystemTime
 @ stdcall GetSystemTimeAdjustment(ptr ptr ptr) kernelbase.GetSystemTimeAdjustment
@@ -716,7 +716,7 @@
 @ stdcall GetThreadIOPendingFlag(long ptr) kernelbase.GetThreadIOPendingFlag
 @ stdcall GetThreadId(ptr) kernelbase.GetThreadId
 @ stdcall GetThreadLocale()
-@ stdcall -version=0x600+ GetThreadPreferredUILanguages(long ptr wstr ptr) kernelbase.GetThreadPreferredUILanguages
+@ stdcall -version=0x600+ GetThreadPreferredUILanguages(long ptr ptr ptr) kernelbase.GetThreadPreferredUILanguages
 @ stdcall GetThreadPriority(long)
 @ stdcall GetThreadPriorityBoost(long ptr)
 @ stdcall -version=0xA00+ GetThreadSelectedCpuSets(ptr ptr long ptr) kernelbase.GetThreadSelectedCpuSets
@@ -737,7 +737,7 @@
 @ stdcall -version=0x600+ GetUserDefaultLocaleName(wstr long) kernelbase.GetUserDefaultLocaleName
 @ stdcall GetUserDefaultUILanguage()
 @ stdcall GetUserGeoID(long) kernelbase.GetUserGeoID
-@ stdcall -version=0x600+ GetUserPreferredUILanguages(long ptr wstr ptr) kernelbase.GetUserPreferredUILanguages
+@ stdcall -version=0x600+ GetUserPreferredUILanguages(long ptr ptr ptr) kernelbase.GetUserPreferredUILanguages
 @ stdcall GetVDMCurrentDirectories(long long)
 @ stdcall GetVersion() kernelbase.GetVersion
 @ stdcall GetVersionExA(ptr) kernelbase.GetVersionExA
@@ -842,7 +842,7 @@
 @ stdcall IsDBCSLeadByte(long)
 @ stdcall IsDBCSLeadByteEx(long long)
 @ stdcall IsDebuggerPresent() kernelbase.IsDebuggerPresent
-@ stdcall IsNLSDefinedString(long long ptr long long) kernelbase.IsNLSDefinedString
+@ stdcall IsNLSDefinedString(long long ptr wstr long) kernelbase.IsNLSDefinedString
 @ stdcall -version=0x600+ IsNormalizedString(long wstr long) kernelbase.IsNormalizedString
 @ stdcall IsProcessInJob(long long ptr)
 @ stdcall IsProcessorFeaturePresent(long)
@@ -886,9 +886,9 @@
 @ stdcall -version=0x601+ K32InitializeProcessForWsWatch(long) kernelbase.InitializeProcessForWsWatch
 @ stdcall -version=0x601+ K32QueryWorkingSet(long ptr long) QueryWorkingSet
 @ stdcall -version=0x601+ K32QueryWorkingSetEx(long ptr long) QueryWorkingSetEx
-@ stdcall -version=0x600+ LCIDToLocaleName(long wstr long long) kernelbase.LCIDToLocaleName
+@ stdcall -version=0x600+ LCIDToLocaleName(long ptr long long) kernelbase.LCIDToLocaleName
 @ stdcall LCMapStringA(long long str long ptr long) kernelbase.LCMapStringA
-@ stdcall -version=0x600+ LCMapStringEx(long long wstr long ptr long ptr ptr long) kernelbase.LCMapStringEx
+@ stdcall -version=0x600+ LCMapStringEx(wstr long wstr long ptr long ptr ptr long) kernelbase.LCMapStringEx
 @ stdcall LCMapStringW(long long wstr long ptr long) kernelbase.LCMapStringW
 @ stdcall LZClose(long)
 @ stdcall LZCloseFile(long)
@@ -1282,11 +1282,11 @@
 @ stdcall -version=0x600+ SetThreadErrorMode(long ptr) kernelbase.SetThreadErrorMode
 @ stdcall SetThreadExecutionState(long)
 @ stdcall SetThreadIdealProcessor(long long) kernelbase.SetThreadIdealProcessor
-@ stdcall GetThreadIdealProcessorEx(ptr ptr) kernelbase.GetThreadIdealProcessorEx
+@ stdcall GetThreadIdealProcessorEx(long ptr) kernelbase.GetThreadIdealProcessorEx
 @ stdcall SetThreadIdealProcessorEx(ptr ptr ptr)
 @ stdcall -version=0x602+ SetThreadInformation(long long ptr long) kernelbase.SetThreadInformation
 @ stdcall SetThreadLocale(long)
-@ stdcall -version=0x600+ SetThreadPreferredUILanguages(long wstr ptr) kernelbase.SetThreadPreferredUILanguages
+@ stdcall -version=0x600+ SetThreadPreferredUILanguages(long ptr ptr) kernelbase.SetThreadPreferredUILanguages
 @ stdcall SetThreadPriority(long long)
 @ stdcall SetThreadPriorityBoost(long long)
 @ stdcall -version=0x602+ SetThreadToken(ptr ptr) kernelbase.SetThreadToken
@@ -1422,9 +1422,9 @@
 @ stdcall WinExec(str long)
 @ stdcall Wow64DisableWow64FsRedirection(ptr)
 @ stdcall Wow64EnableWow64FsRedirection(long)
-@ stdcall -version=0x600+ Wow64GetThreadContext(ptr ptr) kernelbase.Wow64GetThreadContext
+@ stdcall -version=0x600+ Wow64GetThreadContext(long ptr) kernelbase.Wow64GetThreadContext
 @ stdcall Wow64RevertWow64FsRedirection(ptr)
-@ stdcall -version=0x600+ Wow64SetThreadContext(ptr ptr) kernelbase.Wow64SetThreadContext
+@ stdcall -version=0x600+ Wow64SetThreadContext(long ptr) kernelbase.Wow64SetThreadContext
 @ stdcall -version=0x600+ Wow64SuspendThread(ptr)
 @ stdcall WriteConsoleA(long ptr long ptr ptr) kernelbase.WriteConsoleA
 @ stdcall WriteConsoleInputA(long ptr long ptr) kernelbase.WriteConsoleInputA
